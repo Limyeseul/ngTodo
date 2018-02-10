@@ -12,6 +12,8 @@ import {MatButtonModule, MatCardModule, MatIconModule, MatMenuModule, MatToolbar
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { AngularComponent } from './angular/angular.component';
+import {UserService} from './user.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -25,6 +27,7 @@ import { AngularComponent } from './angular/angular.component';
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
+    HttpClientModule,
     MatToolbarModule, /*<mat-toolbar>컴포넌트를 사용할 수 있다.*/
     MatMenuModule, /*<mat-menu>*/
     MatIconModule, /*<mat-icon>*/
@@ -33,7 +36,7 @@ import { AngularComponent } from './angular/angular.component';
     FlexLayoutModule, /*툴바 메뉴를 flex할 수 있도록*/
     MatCardModule, /*jquery페이지에 카드형식모양으로 배열*/
   ],
-  providers: [],
+  providers: [UserService/*서비스는 언제 등록이되고 언제 주입이되는지 기억할 것.(1주차 참고)*/],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
