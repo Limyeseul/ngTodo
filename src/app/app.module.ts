@@ -8,7 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { JqueryComponent } from './jquery/jquery.component';
 import {routes} from './app-routing.module';
 import {RouterModule} from '@angular/router';
-import {MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -22,6 +23,10 @@ import {MatToolbarModule} from '@angular/material';
     BrowserModule,
     RouterModule.forRoot(routes),
     MatToolbarModule, /*<mat-toolbar>컴포넌트를 사용할 수 있다.*/
+    MatMenuModule, /*<mat-menu>*/
+    MatIconModule, /*<mat-icon>*/
+    BrowserAnimationsModule, /*툴바 메뉴 클릭시 출력할 애니메이션*/
+    MatButtonModule, /*버튼이 사각형으로 안보이고 뒷 버튼 배경이 투명하게*/
   ],
   providers: [],
   bootstrap: [AppComponent]

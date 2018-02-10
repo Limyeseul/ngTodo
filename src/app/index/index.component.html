@@ -1,4 +1,38 @@
-<mat-toolbar color="primary">ngTodo</mat-toolbar>
+<!-- icon link -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<mat-toolbar color="primary">
+  <span>ngTodo</span>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <!-- <mat-icon> : https://material.io/icons/ 여기서 제목을 입력하면 아이콘이 바뀜 -->
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/">
+      <mat-icon>dialpad</mat-icon>
+      <span>home</span>
+    </button>
+
+    <!--<button mat-menu-item disabled routerLink="/jQuery">
+      <mat-icon>voicemail</mat-icon>
+      <span>jQuery</span>
+    </button>-->
+    <button mat-menu-item routerLink="/jquery">
+      <mat-icon>voicemail</mat-icon>
+      <span>jQuery</span>
+    </button>
+
+    <button mat-menu-item routerLink="/angular">
+      <mat-icon>notifications_off
+      </mat-icon>
+      <span>angular</span>
+    </button>
+  </mat-menu>
+
+
+</mat-toolbar>
 
 <!-- 부모index.html의 route-outlet에 자식들을 넣는다. -->
 <router-outlet></router-outlet>
