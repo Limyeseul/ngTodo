@@ -11,6 +11,7 @@ import {RouterModule} from '@angular/router';
 import {MatButtonModule, MatCardModule, MatIconModule, MatMenuModule, MatToolbarModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { AngularComponent } from './angular/angular.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     AppComponent,
     IndexComponent,
     HomeComponent,
-    JqueryComponent
+    JqueryComponent,
+    AngularComponent
   ],
   imports: [
     BrowserModule,
