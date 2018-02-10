@@ -17,6 +17,7 @@ let a = 20;
 let b = 10;
 let c = "자바스크립트";
 
+// template string: 빽틱(`) 안에 ${변수명}
 let str = tag `나는 ${a+b}살이고 ${c}를 좋아해`;
 
 console.log(str);

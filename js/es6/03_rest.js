@@ -1,4 +1,5 @@
 // 나머지 연산자 ...
+// sass valuable argument : 인자가 가변적일 때 ... 사용
 function sortRestArgs(...theArgs) {
     var sortedArgs = theArgs.sort();
     return sortedArgs;
