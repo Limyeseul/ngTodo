@@ -4,6 +4,10 @@
 <mat-toolbar color="primary">
   <span>ngTodo</span>
 
+  <!-- 한 줄을 전부 차지한다. 남는공간 1 전부 차지, 줄어들어도 자동 -->
+  <!-- 툴바 메뉴가 오른쪽으로 간다. -->
+  <span fxFlex="1 1 auto"></span>
+
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <!-- <mat-icon> : https://material.io/icons/ 여기서 제목을 입력하면 아이콘이 바뀜 -->
     <mat-icon>menu</mat-icon>
