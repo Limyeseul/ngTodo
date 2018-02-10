@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { JqueryComponent } from './jquery/jquery.component';
 import {routes} from './app-routing.module';
 import {RouterModule} from '@angular/router';
-import {MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatIconModule, MatMenuModule, MatToolbarModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
@@ -29,6 +29,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     BrowserAnimationsModule, /*툴바 메뉴 클릭시 출력할 애니메이션*/
     MatButtonModule, /*버튼이 사각형으로 안보이고 뒷 버튼 배경이 투명하게*/
     FlexLayoutModule, /*툴바 메뉴를 flex할 수 있도록*/
+    MatCardModule, /*jquery페이지에 카드형식모양으로 배열*/
   ],
   providers: [],
   bootstrap: [AppComponent]
