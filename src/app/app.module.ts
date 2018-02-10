@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { JqueryComponent } from './jquery/jquery.component';
 import {routes} from './app-routing.module';
 import {RouterModule} from '@angular/router';
+import {MatToolbarModule} from '@angular/material';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import {RouterModule} from '@angular/router';
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
+    MatToolbarModule, /*<mat-toolbar>컴포넌트를 사용할 수 있다.*/
   ],
   providers: [],
   bootstrap: [AppComponent]
