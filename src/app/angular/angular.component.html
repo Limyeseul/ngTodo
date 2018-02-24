@@ -25,7 +25,8 @@
     <div class="th">수정일</div>
     <div class="th">수정및삭제</div>
   </div>
-  <div class="tr" *ngFor="let item of todoList">
+  <!-- html에 애니메이션을 적용한다. ts에 정의한 'in' 내용을... -->
+  <div class="tr" *ngFor="let item of todoList" [@flyInOut] = "'in'">
     <div class="td">{{item.isFinished ? '완료' : '미완료'}}</div>
     <div class="td">{{item.todo}}</div>
     <div class="td">{{item.created}}</div>
