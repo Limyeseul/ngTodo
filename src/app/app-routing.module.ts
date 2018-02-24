@@ -21,5 +21,6 @@ export const routes: Routes = [
     ]},
   // 향후 관리자 생성 모듈
   // 이 내용은 사용자 화면 띄운 후에 나중에 뜨는 모듈이다.
-  // {path: 'admin', loadChilren: 'app/admin/admin.module#AdminModule'}
+  { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule'}
+
 ];
