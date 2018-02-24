@@ -15,7 +15,7 @@ export class PageVO {
   // PageVo를 생성할때 여러가지 컴포넌트 생성시에도 해당 내용을 쓸 수 있도록 바로 초기 셋팅을 해버리자.
   constructor(private pageIndex: number,
               private pageSize: number,
-              private totalCount: number = 0,
+              private totalCount: number = 0, /* default 초기화 */
               private pageSizeOptions?: number[]) {
     if (!this.pageSizeOptions) {
       this.pageSizeOptions = [5, 15, 30, 60, 90];
