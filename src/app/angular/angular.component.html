@@ -7,12 +7,13 @@
 <form #myForm="ngForm" (ngSubmit)="addTodo()">
   <div fxLayout="row" fxLayoutAlign="center start">
     <mat-form-field fxFlex="4 1 auto">
-      <input matInput placeholder="할일" [(ngModel)]="newTodo.todo" name="todo"
-             #name="ngModel" required>
+      <input matInput placeholder="할일" [(ngModel)]="newTodo.todo" name="todo" #name="ngModel" required>
       <mat-hint align="start" style="color: red;">{{!name.value? '할일을 입력하세요' : ''}}</mat-hint>
     </mat-form-field>
-    <button type="submit" mat-raised-button color="primary" fxFlex="1 1 auto"
-            [disabled]="!myForm.form.valid">추가</button> </div>
+
+    <!-- [disabled]="!myForm.form.valid" :: form #myForm이 valid 하지 않으면 disabled 하라 -->
+    <button type="submit" mat-raised-button color="primary" fxFlex="1 1 auto" [disabled]="!myForm.form.valid">추가</button>
+  </div>
 </form>
 
 
