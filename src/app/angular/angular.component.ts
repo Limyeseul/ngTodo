@@ -21,9 +21,10 @@ export class AngularComponent implements OnInit {
       });
   }
 
-  addTodo(params: TodoVO) {
-    this.userService.addTodo(params).subscribe(body => {
+  addTodo() {
+    this.userService.addTodo(this.newTodo).subscribe((body: TodoVO) => {
       console.log(body);
+      this.todoList.unshift(body);
     });
   }
 }
