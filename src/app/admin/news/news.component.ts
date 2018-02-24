@@ -23,14 +23,26 @@ export class NewsComponent implements OnInit {
   }
 
   ngOnInit() {
-    const params = {
-      start_index: 0,
-      page_size: 5
-    }
-    this.adminService.findNews(params).subscribe(body => {
-        this.newsList = body['data'];
-        console.log(this.newsList);
-      });
+    this.findNews();
   }
 
+  // 페이지가 변경될 때마다 ngOnInit()을 해야한다.
+  findNews() {
+    const params = {
+      start_index: this.page.pageIndex * this.page.pageSize,
+      page_size: this.page.pageSize
+    }
+    this.adminService.findNews(params).subscribe(body => {
+      this.newsList = body['data'];
+      this.page.totalCount = body['total'];
+      console.log(this.newsList);
+    });
+  }
+
+  // 페이지 넘길때마다 변경되는 프로토 타입
+  pageChanged(event: any) {
+    this.page.pageIndex = event.pageIndex;
+    this.page.pageSize = event.pageSize;
+    this.findNews();
+  }
 }
