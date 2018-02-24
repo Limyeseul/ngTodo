@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
 import {TodoVO} from '../domain/todo.vo';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-angular',
@@ -19,8 +19,14 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
                     /*A 상태(옵션), 투명하고 x방향으로 -100% 이동 */
                     style({opacity: 0, transform: 'translate(-100%, 0)'}),
                     animate(300/*, style을 정의할 수 있지만 void=>in에서는 state에서(16Line) 정의 되어있기 때문에 생략 가능*/)]),
-                  transition('* => void', [
-                    animate(300, style({transform: 'translate(0, -100%)', opacity: '0'}))])
+
+                  transition('in => void', [
+                    animate(300, keyframes([
+                      style({opacity: 1, transform: 'translateX(0)', offset: 0}),
+                      style({opacity: 1, transform: 'translateX(-50px)', offset: 0.7}),
+                      style({opacity: 0, transform: 'translateX(100%)', offset: 1.0})
+                    ]))
+                  ]),
                 ])
               ]
 })
