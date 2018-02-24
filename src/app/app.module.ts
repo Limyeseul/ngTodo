@@ -8,7 +8,10 @@ import { HomeComponent } from './home/home.component';
 import { JqueryComponent } from './jquery/jquery.component';
 import {routes} from './app-routing.module';
 import {RouterModule} from '@angular/router';
-import {MatButtonModule, MatCardModule, MatIconModule, MatMenuModule, MatToolbarModule} from '@angular/material';
+import {
+  MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule,
+  MatToolbarModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { AngularComponent } from './angular/angular.component';
@@ -37,6 +40,8 @@ import {FormsModule} from '@angular/forms';
     FlexLayoutModule, /*툴바 메뉴를 flex할 수 있도록*/
     MatCardModule, /*jquery페이지에 카드형식모양으로 배열*/
     FormsModule,
+    MatFormFieldModule, /* mat-form-field */
+    MatInputModule,
   ],
   providers: [UserService/*서비스는 언제 등록이되고 언제 주입이되는지 기억할 것.(1주차 참고)*/],
   bootstrap: [AppComponent]
