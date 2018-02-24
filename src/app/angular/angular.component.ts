@@ -24,7 +24,10 @@ export class AngularComponent implements OnInit {
   addTodo() {
     this.userService.addTodo(this.newTodo).subscribe((body: TodoVO) => {
       console.log(body);
-      this.todoList.unshift(body);
+
+      this.todoList.unshift(body);    // 추가버튼 누르면 맨 윗부분에 추가하도록
+      this.newTodo = new TodoVO();    // 추가버튼 누르면 텍스트 폼을 초기화
+
     });
   }
 }
