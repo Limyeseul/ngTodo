@@ -1,3 +1,8 @@
+<div fxLayout="row">
+  <input type="text" [(ngModel)]="newTodo.todo" placeholder="할일" id="input_todo" fxFlex="4 1 auto">
+  <button type="button" fxFlex="1 1 auto" class="active" (click)="addTodo()">추가</button>
+</div>
+
 <div class="table mt-2">
   <div class="tr">
     <div class="th">완료</div>

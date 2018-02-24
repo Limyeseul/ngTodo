@@ -14,6 +14,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { AngularComponent } from './angular/angular.component';
 import {UserService} from './user.service';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {HttpClientModule} from '@angular/common/http';
     MatButtonModule, /*버튼이 사각형으로 안보이고 뒷 버튼 배경이 투명하게*/
     FlexLayoutModule, /*툴바 메뉴를 flex할 수 있도록*/
     MatCardModule, /*jquery페이지에 카드형식모양으로 배열*/
+    FormsModule,
   ],
   providers: [UserService/*서비스는 언제 등록이되고 언제 주입이되는지 기억할 것.(1주차 참고)*/],
   bootstrap: [AppComponent]
