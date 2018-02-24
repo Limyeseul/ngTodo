@@ -63,7 +63,7 @@ export class AngularComponent implements OnInit {
     // this.tempTodoMap.set(item.todo_id, item);
 
     // shallow copy => deep copy 해야한다. (객체 저장된 값을 갖고오는게 아니라 메모리에 있는 값을 갖고와야한다.)
-    // const temp = Object.assign({}, item);
+    const temp = Object.assign({}, item);
     this.tempTodoMap.set(item.todo_id, Object.assign({}, item));
 
   }
@@ -76,5 +76,29 @@ export class AngularComponent implements OnInit {
     const tempTodo = this.tempTodoMap.get(item.todo_id);
     item.isFinished = tempTodo.isFinished;    // 완료 유무 체크박스와
     item.todo = tempTodo.todo;                // 내용을 갖고온다.
+  }
+
+  // 수정 버튼 누를 때
+  modify(item: TodoVO) {
+    this.userService.modifyTodo(item).subscribe((body: TodoVO) => {
+      item.isFinished = body.isFinished;
+      item.todo = body.todo;
+      item.updated = body.updated;
+      // 수정 폼을 원복
+      item.isEdited = false;
+    });
+  }
+
+  // 삭제 버튼 누를 때
+  remove(item: TodoVO, index: number) {
+    const result = ('삭제하시겠습니까?');
+    if (result) {
+      this.userService.removeTodo(item.todo_id).subscribe(body => {
+        console.log(body);
+        // todoList에서 해당 todo_id의 TodoVO객체를 삭제
+        // splice(시작 인덱스, 지울 갯수)
+        this.todoList.splice(index, 1); // index에서 한개를 지우겠다.
+      });
+    }
   }
 }

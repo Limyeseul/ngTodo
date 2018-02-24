@@ -23,4 +23,13 @@ export class UserService {
   addTodo(params: TodoVO) {
     return this.http.post(this.SERVER + '/api/todo', params, {headers: this.headers});
   }
+
+  modifyTodo(params: TodoVO) {
+    return this.http.put(this.SERVER + '/api/todo', params, {headers: this.headers});
+  }
+
+  removeTodo(param: number) {
+    // es6 문법인 `사용하여 todo_id를 넘길 수 있도록 함.
+    return this.http.delete(this.SERVER + `/api/todo?todo_id=${param}`);
+  }
 }
