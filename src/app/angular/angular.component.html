@@ -32,8 +32,9 @@
 
     <!-- 기본 폼
         html에 애니메이션을 적용한다. ts에 정의한 'in' 내용을...
-        *ngIf="!item.isEdited" :: item이 true가 아니면 보여주기 -->
-    <div class="tr" [@flyInOut] = "'in'" *ngIf="!item.isEdited">
+        *ngIf="!item.isEdited" :: item이 true가 아니면 보여주기
+        appHighlight :: highlight 디렉티브 적용하여 시작하자마자 생성자에 있는 돔을 실행. (노랗게 표시) -->
+    <div class="tr" [@flyInOut] = "'in'" *ngIf="!item.isEdited" appHighlight [highlightColor]="'#9BD487'">
       <div class="td">{{item.isFinished ? '완료' : '미완료'}}</div>
       <div class="td">{{item.todo}}</div>
       <div class="td">{{item.created}}</div>
