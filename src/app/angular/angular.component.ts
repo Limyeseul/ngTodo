@@ -25,8 +25,9 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
               ]
 })
 export class AngularComponent implements OnInit {
-  newTodo: TodoVO = new TodoVO(); // 할일 추가를 위한 모델 데이터
-  todoList: Array<TodoVO>;        // 할일 목록
+  newTodo: TodoVO = new TodoVO();      // 할일 추가를 위한 모델 데이터
+  todoList: Array<TodoVO>;             // 할일 목록
+  tempTodoMap = new Map<number, TodoVO>();    // 수정버튼 누를 때 값을 저장하기 위한 임시 컬렉션
 
   constructor(private userService: UserService) {}
 
@@ -51,6 +52,29 @@ export class AngularComponent implements OnInit {
   // 수정 버튼 누를 때 item.isEdited을 true로 바꾸는 프로토 타입
   save(item: TodoVO) {
     item.isEdited = true;
+
+    // Map에 넣은 값을 저장한다.
+    /*  shallow copy : 객체 저장된 값을 갖고오는게 아니라 메모리에 있는 값만 갖고오는 것.
+        deep copy : 객체에 저장된 값과 메모리 값을 모두 갖고 오는 것.
+        js/es5/15_deepcopy.js 참고
+     */
+
+    // shallow copy
+    // this.tempTodoMap.set(item.todo_id, item);
+
+    // shallow copy => deep copy 해야한다. (객체 저장된 값을 갖고오는게 아니라 메모리에 있는 값을 갖고와야한다.)
+    // const temp = Object.assign({}, item);
+    this.tempTodoMap.set(item.todo_id, Object.assign({}, item));
+
   }
 
+  // 취소 버튼 누를 때
+  restore(item: TodoVO) {
+    item.isEdited = false;
+
+    // Map에 넣었던 내용을 가져온다.
+    const tempTodo = this.tempTodoMap.get(item.todo_id);
+    item.isFinished = tempTodo.isFinished;    // 완료 유무 체크박스와
+    item.todo = tempTodo.todo;                // 내용을 갖고온다.
+  }
 }

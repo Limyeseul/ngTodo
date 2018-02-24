@@ -28,7 +28,7 @@
 
   <ng-template ngFor let-item [ngForOf]="todoList">
 
-    <!-- TodoVO객체에 변수 하나 추가해서 그 변수가 true, false에 따라 기본폼을 보여줄지 수정폼을 보여줄지 한다. -->
+    <!-- TodoVO객체에 변수 하나 추가(isEdited)해서 그 변수가 true, false에 따라 기본폼을 보여줄지 수정폼을 보여줄지 한다. -->
 
     <!-- 기본 폼
         html에 애니메이션을 적용한다. ts에 정의한 'in' 내용을...
@@ -47,18 +47,23 @@
     <!-- 수정 폼 -->
     <!-- *ngIf="item.isEdited" :: item이 true면 보여주기 -->
     <div class="tr" *ngIf="item.isEdited">
-      <div class="td"></div>
-      <div class="td"></div>
-      <div class="td"></div>
-      <div class="td"></div>
+      <!-- 체크박스 -->
+      <div class="td">
+        <mat-checkbox [(ngModel)]="item.isEdited"></mat-checkbox>
+      </div>
+      <!-- 입력박스 -->
+      <div class="td">
+        <!--<input matInput [(ngModel)]="item.todo">-->
+        <input type="text" [(ngModel)]="item.todo">
+      </div>
+      <div class="td">{{item.created}}</div>
+      <div class="td">{{item.updated}}</div>
       <div class="td">
         <button mat-raised-button color="accent">저장</button>
-        <button mat-raised-button color="warn">취소</button>
+        <button mat-raised-button color="warn" (click)="restore(item)">취소</button>
       </div>
     </div>
 
   </ng-template>
-
-
 
 </div>

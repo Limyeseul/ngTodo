@@ -9,7 +9,7 @@ import { JqueryComponent } from './jquery/jquery.component';
 import {routes} from './app-routing.module';
 import {RouterModule} from '@angular/router';
 import {
-  MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule,
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule,
   MatToolbarModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -42,6 +42,7 @@ import {FormsModule} from '@angular/forms';
     FormsModule,
     MatFormFieldModule, /* mat-form-field */
     MatInputModule,
+    MatCheckboxModule, /*mat-checkbox*/
   ],
   providers: [UserService/*서비스는 언제 등록이되고 언제 주입이되는지 기억할 것.(1주차 참고)*/],
   bootstrap: [AppComponent]
