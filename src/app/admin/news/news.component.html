@@ -1,3 +1,16 @@
-<p>
-  news works!
-</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      뉴스 목록
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="board-box" fxLayout="column" *ngFor="let news of newsList">
+      <!-- Row 와 같은방향 정렬은 양쪽끝에 붙이기(space-between), 대각선 방향 정렬 가운데(center) -->
+      <p fxLayout="row" fxLayoutAlign="space-between center">
+        <span>{{news.title}}</span><span>{{news.created}}</span>
+      </p>
+    </div>
+    <!-- 페이지네이션 -->
+  </mat-card-content>
+</mat-card>

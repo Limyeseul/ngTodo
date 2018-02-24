@@ -1,4 +1,4 @@
-export class NewsVo {
+export class NewsVO {
   news_id: number;
   title: string;
   content: string;

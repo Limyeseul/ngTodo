@@ -5,19 +5,22 @@ import { HomeComponent } from './home/home.component';
 import { NewsComponent } from './news/news.component';
 import {RouterModule} from '@angular/router';
 import {adminRoutes} from './admin-routing';
-import {MatButtonModule, MatCardModule, MatExpansionModule, MatToolbarModule} from '@angular/material';
+import {MatCardModule, MatExpansionModule, MatToolbarModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {HttpClientModule} from '@angular/common/http';
+import {AdminService} from './admin.service';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(adminRoutes),
+    HttpClientModule,
     FlexLayoutModule,
     MatToolbarModule,
     MatExpansionModule,
     MatCardModule,
-    MatButtonModule,
   ],
-  declarations: [AdminComponent, HomeComponent, NewsComponent]
+  declarations: [AdminComponent, HomeComponent, NewsComponent],
+  providers: [AdminService]
 })
 export class AdminModule { }
