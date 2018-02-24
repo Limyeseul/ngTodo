@@ -25,14 +25,40 @@
     <div class="th">수정일</div>
     <div class="th">수정및삭제</div>
   </div>
-  <!-- html에 애니메이션을 적용한다. ts에 정의한 'in' 내용을... -->
-  <div class="tr" *ngFor="let item of todoList" [@flyInOut] = "'in'">
-    <div class="td">{{item.isFinished ? '완료' : '미완료'}}</div>
-    <div class="td">{{item.todo}}</div>
-    <div class="td">{{item.created}}</div>
-    <div class="td">{{item.updated}}</div>
-    <div class="td">
-      <button mat-raised-button color="warn">삭제</button>
+
+  <ng-template ngFor let-item [ngForOf]="todoList">
+
+    <!-- TodoVO객체에 변수 하나 추가해서 그 변수가 true, false에 따라 기본폼을 보여줄지 수정폼을 보여줄지 한다. -->
+
+    <!-- 기본 폼
+        html에 애니메이션을 적용한다. ts에 정의한 'in' 내용을...
+        *ngIf="!item.isEdited" :: item이 true가 아니면 보여주기 -->
+    <div class="tr" [@flyInOut] = "'in'" *ngIf="!item.isEdited">
+      <div class="td">{{item.isFinished ? '완료' : '미완료'}}</div>
+      <div class="td">{{item.todo}}</div>
+      <div class="td">{{item.created}}</div>
+      <div class="td">{{item.updated}}</div>
+      <div class="td">
+        <button mat-raised-button color="accent" (click)="save(item)">수정</button>
+        <button mat-raised-button color="warn">삭제</button>
+      </div>
     </div>
-  </div>
+
+    <!-- 수정 폼 -->
+    <!-- *ngIf="item.isEdited" :: item이 true면 보여주기 -->
+    <div class="tr" *ngIf="item.isEdited">
+      <div class="td"></div>
+      <div class="td"></div>
+      <div class="td"></div>
+      <div class="td"></div>
+      <div class="td">
+        <button mat-raised-button color="accent">저장</button>
+        <button mat-raised-button color="warn">취소</button>
+      </div>
+    </div>
+
+  </ng-template>
+
+
+
 </div>

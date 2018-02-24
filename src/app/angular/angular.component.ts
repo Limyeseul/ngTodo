@@ -47,4 +47,10 @@ export class AngularComponent implements OnInit {
 
     });
   }
+
+  // 수정 버튼 누를 때 item.isEdited을 true로 바꾸는 프로토 타입
+  save(item: TodoVO) {
+    item.isEdited = true;
+  }
+
 }
