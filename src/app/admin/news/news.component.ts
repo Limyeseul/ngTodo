@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AdminService} from '../admin.service';
 import {NewsVO} from '../../domain/news.vo';
 import {PageVO} from '../../domain/page.vo';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-news',
@@ -12,7 +13,7 @@ export class NewsComponent implements OnInit {
   newsList: NewsVO[];   // Array<NewsVo>
   page: PageVO;
 
-  constructor(private adminService: AdminService) {
+  constructor(private adminService: AdminService, private router: Router) {
 
     // 여기서 pageVO 생성자를 하면 나중에 리펙토링시 중복될 수 있으니 여기다 하지말고 PageVO 생성할때 바로 하자.
     this.page = new PageVO(0, 5, 0, [5, 15, 30, 60, 90]);
@@ -44,5 +45,9 @@ export class NewsComponent implements OnInit {
     this.page.pageIndex = event.pageIndex;
     this.page.pageSize = event.pageSize;
     this.findNews();
+  }
+
+  gotoView(item: NewsVO) {
+    this.router.navigateByUrl(`/admin/news/view/${item.news_id}`);
   }
 }

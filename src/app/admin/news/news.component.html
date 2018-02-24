@@ -1,3 +1,5 @@
+<router-outlet></router-outlet>
+
 <mat-card>
   <mat-card-header>
     <mat-card-title>
@@ -5,7 +7,7 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div class="board-box" fxLayout="column" *ngFor="let news of newsList">
+    <div class="board-box" fxLayout="column" *ngFor="let news of newsList" (click)="gotoView(news)">
       <!-- Row 와 같은방향 정렬은 양쪽끝에 붙이기(space-between), 대각선 방향 정렬 가운데(center) -->
       <p fxLayout="row" fxLayoutAlign="space-between center">
         <span>{{news.title}}</span><span>{{news.created}}</span>
