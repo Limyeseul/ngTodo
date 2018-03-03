@@ -4,15 +4,6 @@
 <mat-toolbar color="primary">
   <span>ngTodo</span>
 
-  <!-- 한 줄을 전부 차지한다. 남는공간 1 전부 차지, 줄어들어도 자동 -->
-  <!-- 툴바 메뉴가 오른쪽으로 간다. -->
-  <span fxFlex="1 1 auto"></span>
-
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <!-- <mat-icon> : https://material.io/icons/ 여기서 제목을 입력하면 아이콘이 바뀜 -->
-    <mat-icon>menu</mat-icon>
-  </button>
-
   <mat-menu #menu="matMenu">
     <button mat-menu-item routerLink="/">
       <mat-icon>dialpad</mat-icon>
@@ -35,6 +26,34 @@
     </button>
   </mat-menu>
 
+  <!-- 한 줄을 전부 차지한다. 남는공간 1 전부 차지, 줄어들어도 자동 -->
+  <!-- 툴바 메뉴가 오른쪽으로 간다. -->
+  <span fxFlex="1 1 auto"></span>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <!-- <mat-icon> : https://material.io/icons/ 여기서 제목을 입력하면 아이콘이 바뀜 -->
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <button mat-button [matMenuTriggerFor]="login_menu">
+    <mat-icon>person</mat-icon>
+    <span *ngIf="!authService.isAuthenticated()">로그인</span>
+    <span *ngIf="authService.isAuthenticated()">로그아웃</span>
+  </button>
+  <mat-menu #login_menu="matMenu">
+    <button mat-menu-item routerLink="/login" *ngIf="!authService.isAuthenticated()">
+      <mat-icon>input</mat-icon>
+      <span>로그인</span>
+    </button>
+    <button mat-menu-item (click)="authService.logOut()" *ngIf="authService.isAuthenticated()">
+      <mat-icon>power_settings_new</mat-icon>
+      <span>로그아웃</span>
+    </button>
+    <button mat-menu-item routerLink="/nickname">
+      <mat-icon>shuffle</mat-icon>
+      <span>닉네임변경</span>
+    </button>
+  </mat-menu>
 
 </mat-toolbar>
 
