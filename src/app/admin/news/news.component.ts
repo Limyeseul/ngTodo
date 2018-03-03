@@ -50,4 +50,8 @@ export class NewsComponent implements OnInit {
   gotoView(item: NewsVO) {
     this.router.navigateByUrl(`/admin/news/view/${item.news_id}`);
   }
+
+  gotoWrite() {
+    this.router.navigateByUrl(`/admin/news/write`);
+  }
 }
