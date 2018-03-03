@@ -43,7 +43,29 @@ export class WriteComponent implements OnInit {
     // 로딩 완료 후
     reader.onload = () => {
       // 비동기로 서버에 업로드 바로 실행
-
+      this.imageUpload();
     };
+  }
+
+  imageUpload() {
+    const formData = new FormData();
+    const file: File = this.fileList[0];  // 파일 데이터(value)
+
+    formData.append('file', file, file.name); // name (key값이기 때문에 name은 api에 정의한 file로 명시를 해야한다.)
+
+    this.adminService.imageUpload(formData)
+      .subscribe(body => {
+        console.log(body);
+
+        if (body['result'] === 0) {
+          // 이미지 경로를 editor에 추가한다.
+          console.log(body['value']);
+          if (this.news.content) {
+            this.news.content += `<img src="http://www.javabrain.kr${body['value']}" style="max-width: 100%;">`;
+          } else {
+            this.news.content = `<img src="http://www.javabrain.kr${body['value']}" style="max-width: 100%;">`;
+          }
+        }
+      });
   }
 }
