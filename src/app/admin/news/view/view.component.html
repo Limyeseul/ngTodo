@@ -1,3 +1,14 @@
-<p>
-  view works!
-</p>
+<!-- news가 null이 아니거나 news가 undefined가 아닐 때만 출력해라. -->
+<!--<mat-card *ngIf="news != null || news !== undefined">-->
+<mat-card *ngIf="news"> <!-- news가 true일때 -->
+  <mat-card-header>
+    <mat-card-title> {{news.title}} </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div [innerHTML]="news.content"></div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button mat-button-sm color="primary">수정</button>
+    <button mat-raised-button mat-button-sm color="warn">삭제</button>
+  </mat-card-actions>
+</mat-card>

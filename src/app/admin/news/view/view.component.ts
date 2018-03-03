@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AdminService} from '../../admin.service';
+import {NewsVO} from '../../../domain/news.vo';
 
 @Component({
   selector: 'app-view',
@@ -8,6 +9,8 @@ import {AdminService} from '../../admin.service';
   styleUrls: ['./view.component.scss']
 })
 export class ViewComponent implements OnInit {
+
+  news: NewsVO;
 
   constructor(private route: ActivatedRoute, private adminService: AdminService) {
     // data 는 즉 news_id가 된다.
@@ -25,6 +28,10 @@ export class ViewComponent implements OnInit {
   }
 
   findDetailNews(news_id: number) {
-    this.adminService.findDetailNews(news_id).subscribe(body => console.log(body));
+    this.adminService.findDetailNews(news_id)
+      .subscribe((body: NewsVO) => {
+          console.log(body);
+          this.news = body;
+      });
   }
 }
