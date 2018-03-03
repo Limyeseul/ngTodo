@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AdminService} from '../../admin.service';
 import {NewsVO} from '../../../domain/news.vo';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
 import {ViewDialogComponent} from '../view-dialog/view-dialog.component';
+import {ResultVo} from '../../../domain/result.vo';
 
 @Component({
   selector: 'app-view',
@@ -16,7 +17,9 @@ export class ViewComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private adminService: AdminService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private snackBar: MatSnackBar,
+              private router: Router) {
     // data 는 즉 news_id가 된다.
     this.route.params.subscribe(data => {
       console.log(data);
@@ -40,7 +43,28 @@ export class ViewComponent implements OnInit {
   }
 
   confirmDelete() {
-    // view-dialog 컴포넌트 open
-    this.dialog.open(ViewDialogComponent, null);
+    // view-dialog 컴포넌트 open하고 보낼 data 작성
+    const dialogRef = this.dialog.open(ViewDialogComponent, {
+      // data라는 key값으로 보내야한다는 것을 생각하자.
+      data: {title: this.news.title,
+             msg: '삭제하시겠습니까?'}
+    });
+
+    // 닫힌 후에
+    dialogRef.afterClosed()
+      .subscribe(data => {
+        console.log(data);
+
+        // true면 서버에 연동해서 데이터 삭제
+        if (data) {
+          this.adminService.removeNews(this.news.news_id)
+            .subscribe((body: ResultVo) => {
+              if (body.result === 0) {
+                this.snackBar.open('삭제되었습니다.', null, {duration: 2000});
+                this.router.navigateByUrl('/admin/news');
+              }
+            });
+        }
+      });
   }
 }

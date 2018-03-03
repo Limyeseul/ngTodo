@@ -35,4 +35,8 @@ export class AdminService {
     // this.headers가 아니다. 위에 있는 헤더가 아닌 넘어온 헤더가 fome-data 형식이다.
     return this.http.post(this.SERVER + '/api/imageUpload', formData, {headers: headers});
   }
+
+  removeNews(news_id: number) {
+    return this.http.delete(this.SERVER + `/api/news?news_id=${news_id}`);
+  }
 }

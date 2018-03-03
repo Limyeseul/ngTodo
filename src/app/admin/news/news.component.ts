@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AdminService} from '../admin.service';
 import {NewsVO} from '../../domain/news.vo';
 import {PageVO} from '../../domain/page.vo';
-import {Router} from '@angular/router';
+import {NavigationStart, Router} from '@angular/router';
 
 @Component({
   selector: 'app-news',
@@ -25,6 +25,18 @@ export class NewsComponent implements OnInit {
 
   ngOnInit() {
     this.findNews();
+
+    // 삭제할때 news리스트에 삭제된 게시글이 있음,,,
+    this.router.events.subscribe(events => {
+    // 부모, 자식 경로가 호출될때마다 여러가지 이벤트 발생. NavigationStart -> NavigationReconized -> NavigationEnd
+      if (events instanceof NavigationStart) {
+        console.log('nagigation start:' + events.url);
+        if (events.url === '/admin/news') {
+          this.findNews();
+        }
+      }
+    });
+
   }
 
   // 페이지가 변경될 때마다 ngOnInit()을 해야한다.
