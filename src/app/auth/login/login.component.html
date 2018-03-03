@@ -3,14 +3,19 @@
               gt-xs >= 960 x좌표가 960이하이면 로그인카드 넓이를 75로 한다.
               gt-sm >= 959 -->
   <mat-card fxFlex.xs="100" fxFlex.gt-xs="75" fxFlex.gt-sm="50">
+
     <mat-card-header>
       <mat-card-title>로그인</mat-card-title>
     </mat-card-header>
+
     <mat-card-content fxLayout="column">
       <div class="mt-1">
         <!-- *ngIf="naverUrl" : 네이버 로그인을 위한 uri -->
-        <a [href]="naverUrl" *ngIf="naverUrl"><img src="/assets/images/naver.png" style="max-width: 100%;"></a>
+        <a [href]="naverUrl" *ngIf="naverUrl">
+          <img src="/assets/images/naver.png" style="max-width: 100%;">
+        </a>
       </div>
     </mat-card-content>
+
   </mat-card>
 </div>

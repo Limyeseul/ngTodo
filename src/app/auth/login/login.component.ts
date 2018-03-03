@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.userService.getSocial('naver2')
       .subscribe(body => {
-        this.naverUrl = body['site'];
+        this.naverUrl = body['url'];
       });
   }
 
