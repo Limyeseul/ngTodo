@@ -61,25 +61,24 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.member.nickname = this.form.controls['nickname'].value;
-
     // 서버 연동하여 회원가입
-   /* this.userService.signUp(this.member)
-      .then((res: ResultVO) => {
+    this.member.nickname = this.form.controls['nickname'].value;
+    this.userService.signUp(this.member)
+      .subscribe((res: ResultVO) => {
         if (res.result === 0) { // 회원 가입이 성공하면 토큰을 저장하고 이동한다.
           localStorage.setItem('token', res.data['token']);
           // 페이지 리프레쉬
-          if (this.authGuard.redirectUrl) {
-            this.router.navigateByUrl(this.authGuard.redirectUrl);
-          } else {
+          // if (this.authGuard.redirectUrl) {
+          //   this.router.navigateByUrl(this.authGuard.redirectUrl);
+          // } else {
             this.router.navigateByUrl('/');
-          }
+          // }
         } else if (res.result === 100) {
           this.snackBar.open('닉네임이 중복입니다.', null, {duration: 2000});
         } else {
           this.snackBar.open('회원가입에 실패하였습니다.', null, {duration: 2000});
         }
-      });*/
+      });
   }
 
 }
