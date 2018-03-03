@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AdminService} from '../../admin.service';
 import {NewsVO} from '../../../domain/news.vo';
+import {MatDialog} from '@angular/material';
+import {ViewDialogComponent} from '../view-dialog/view-dialog.component';
 
 @Component({
   selector: 'app-view',
@@ -12,7 +14,9 @@ export class ViewComponent implements OnInit {
 
   news: NewsVO;
 
-  constructor(private route: ActivatedRoute, private adminService: AdminService) {
+  constructor(private route: ActivatedRoute,
+              private adminService: AdminService,
+              private dialog: MatDialog) {
     // data 는 즉 news_id가 된다.
     this.route.params.subscribe(data => {
       console.log(data);
@@ -33,5 +37,10 @@ export class ViewComponent implements OnInit {
           console.log(body);
           this.news = body;
       });
+  }
+
+  confirmDelete() {
+    // view-dialog 컴포넌트 open
+    this.dialog.open(ViewDialogComponent, null);
   }
 }
