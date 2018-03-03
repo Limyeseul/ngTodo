@@ -3,6 +3,9 @@ import {IndexComponent} from './index/index.component';
 import {HomeComponent} from './home/home.component';
 import {JqueryComponent} from './jquery/jquery.component';
 import {AngularComponent} from './angular/angular.component';
+import {LoginComponent} from './auth/login/login.component';
+import {RegisterComponent} from './auth/register/register.component';
+import {NicknameComponent} from './nickname/nickname.component';
 
 // const [변수]: [타입] :: es6에서 나온 키워드지만 ts문법에 들어감, 지역변수의 개념이 있다.
 // 리터널 객체로 바로 객체를 할당해준다.
@@ -18,6 +21,10 @@ export const routes: Routes = [
       // path가 jquery면 컴포넌트는 JqueryComponent 호출하여 route-outlet에 주입하라.
       {path: 'jquery', component: JqueryComponent},
       {path: 'angular', component: AngularComponent},
+
+      {path: 'login', component: LoginComponent},
+      {path: 'register', component: RegisterComponent},
+      {path: 'nickname', component: NicknameComponent},
     ]},
   // 향후 관리자 생성 모듈
   // 이 내용은 사용자 화면 띄운 후에 나중에 뜨는 모듈이다.

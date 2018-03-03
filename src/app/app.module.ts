@@ -20,6 +20,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { HighlightDirective } from './highlight.directive';
 import { MydatePipe } from './mydate.pipe';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { NicknameComponent } from './nickname/nickname.component';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { MydatePipe } from './mydate.pipe';
     JqueryComponent,
     AngularComponent,
     HighlightDirective,
-    MydatePipe
+    MydatePipe,
+    LoginComponent,
+    RegisterComponent,
+    NicknameComponent
   ],
   imports: [
     BrowserModule,

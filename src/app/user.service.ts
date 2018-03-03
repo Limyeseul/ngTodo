@@ -32,4 +32,9 @@ export class UserService {
     // es6 문법인 `사용하여 todo_id를 넘길 수 있도록 함.
     return this.http.delete(this.SERVER + `/api/todo?todo_id=${param}`);
   }
+
+  // 로그인 인증
+  getSocial(site: string) {
+    return this.http.get(this.SERVER + `/api/social?site=${site}`);
+  }
 }
