@@ -24,6 +24,7 @@ import { MydatePipe } from './mydate.pipe';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { NicknameComponent } from './nickname/nickname.component';
+import {AuthGuardService} from './auth/auth-guard.service';
 
 
 @NgModule({
@@ -57,9 +58,10 @@ import { NicknameComponent } from './nickname/nickname.component';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    // MatSnackBarModule,
+    MatSnackBarModule,
   ],
-  providers: [UserService/*서비스는 언제 등록이되고 언제 주입이되는지 기억할 것.(1주차 참고)*/],
+  providers: [UserService/*서비스는 언제 등록이되고 언제 주입이되는지 기억할 것.(1주차 참고)*/,
+              AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

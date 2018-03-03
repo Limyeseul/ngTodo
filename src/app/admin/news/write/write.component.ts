@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NewsVO} from '../../../domain/news.vo';
 import {AdminService} from '../../admin.service';
-import {ResultVo} from '../../../domain/result.vo';
+import {ResultVO} from '../../../domain/result.vo';
 import {MatSnackBar} from '@angular/material';
 import {Router} from '@angular/router';
 
@@ -23,7 +23,7 @@ export class WriteComponent implements OnInit {
 
   addNews() {
     this.adminService.addNews(this.news)
-      .subscribe((body: ResultVo) => {
+      .subscribe((body: ResultVO) => {
         console.log(body);
         // 정상적인 처리가 될 경우 스낵바로 메시지 띄우고, 목로으로 들어가기
         if(body.result === 0) {

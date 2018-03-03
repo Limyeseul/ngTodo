@@ -4,7 +4,7 @@ import {AdminService} from '../../admin.service';
 import {NewsVO} from '../../../domain/news.vo';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {ViewDialogComponent} from '../view-dialog/view-dialog.component';
-import {ResultVo} from '../../../domain/result.vo';
+import {ResultVO} from '../../../domain/result.vo';
 
 @Component({
   selector: 'app-view',
@@ -58,7 +58,7 @@ export class ViewComponent implements OnInit {
         // true면 서버에 연동해서 데이터 삭제
         if (data) {
           this.adminService.removeNews(this.news.news_id)
-            .subscribe((body: ResultVo) => {
+            .subscribe((body: ResultVO) => {
               if (body.result === 0) {
                 this.snackBar.open('삭제되었습니다.', null, {duration: 2000});
                 this.router.navigateByUrl('/admin/news');
